@@ -1,20 +1,21 @@
 const getDiamond = (input) => {
   let col = (input * 2) - 1
-  let start, finish, temp = ""
+  const indexInput = input - 1
+  let start = indexInput, finish = indexInput, temp = ""
   for (let i = 0; i < col; i++) {
-    if (i <= input - 1) {
-      start = (input - 1) - i
-      finish = (input - 1) + i
-    } else {
-      start = (i - input) + 1
-      finish = (col - start) - 1
-    }
     for (let j = 0; j < col; j++) {
       temp += (j >= start && j <= finish) ? "-" : "+"
+    }
+    if (i < indexInput) {
+      start -= 1
+      finish += 1
+    } else {
+      start += 1
+      finish -= 1
     }
     console.log(temp)
     temp = ""
   }
 }
 
-getDiamond(3)
+getDiamond(9)
